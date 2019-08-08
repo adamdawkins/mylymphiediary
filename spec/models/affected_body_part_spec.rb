@@ -5,6 +5,7 @@ RSpec.describe AffectedBodyPart, type: :model do
     it { is_expected.to belong_to :user }
     it { is_expected.to belong_to :body_part }
     it { is_expected.to have_many(:measuring_points).dependent(:destroy) }
+    it { is_expected.to have_many(:recordings).dependent(:destroy) }
   end
 
   describe "validations" do

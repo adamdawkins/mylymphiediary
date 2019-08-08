@@ -1,6 +1,5 @@
 class MeasuringPoint < ApplicationRecord
-  belongs_to :body_part
-  has_many :measuring_point_values, dependent: :destroy
+  belongs_to :affected_body_part
 
-  has_many :measurements, dependent: :destroy
+  validates :value, presence: true, numericality: true
 end

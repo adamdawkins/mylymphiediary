@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_160231) do
+ActiveRecord::Schema.define(version: 2019_08_08_111318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,31 +32,28 @@ ActiveRecord::Schema.define(version: 2019_08_06_160231) do
 
   create_table "measurements", force: :cascade do |t|
     t.bigint "measuring_point_id"
-    t.bigint "affected_body_part_id"
-    t.date "measured_at"
+    t.bigint "recording_id"
     t.decimal "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["affected_body_part_id"], name: "index_measurements_on_affected_body_part_id"
     t.index ["measuring_point_id"], name: "index_measurements_on_measuring_point_id"
-  end
-
-  create_table "measuring_point_values", force: :cascade do |t|
-    t.bigint "measuring_point_id"
-    t.bigint "affected_body_part_id"
-    t.decimal "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["affected_body_part_id"], name: "index_measuring_point_values_on_affected_body_part_id"
-    t.index ["measuring_point_id"], name: "index_measuring_point_values_on_measuring_point_id"
+    t.index ["recording_id"], name: "index_measurements_on_recording_id"
   end
 
   create_table "measuring_points", force: :cascade do |t|
-    t.bigint "body_part_id"
-    t.string "name"
+    t.decimal "value"
+    t.bigint "affected_body_part_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["body_part_id"], name: "index_measuring_points_on_body_part_id"
+    t.index ["affected_body_part_id"], name: "index_measuring_points_on_affected_body_part_id"
+  end
+
+  create_table "recordings", force: :cascade do |t|
+    t.bigint "affected_body_part_id"
+    t.date "recorded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["affected_body_part_id"], name: "index_recordings_on_affected_body_part_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,9 +64,8 @@ ActiveRecord::Schema.define(version: 2019_08_06_160231) do
 
   add_foreign_key "affected_body_parts", "body_parts"
   add_foreign_key "affected_body_parts", "users"
-  add_foreign_key "measurements", "affected_body_parts"
   add_foreign_key "measurements", "measuring_points"
-  add_foreign_key "measuring_point_values", "affected_body_parts"
-  add_foreign_key "measuring_point_values", "measuring_points"
-  add_foreign_key "measuring_points", "body_parts"
+  add_foreign_key "measurements", "recordings"
+  add_foreign_key "measuring_points", "affected_body_parts"
+  add_foreign_key "recordings", "affected_body_parts"
 end
