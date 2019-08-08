@@ -1,0 +1,2 @@
+module AffectedBodyPartsHelper
+end
