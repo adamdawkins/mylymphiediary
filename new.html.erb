@@ -1,0 +1,7 @@
+<% @affected_body_part.body_part.measuring_points.each do |measuring_point|
+%>
+<%= measuring_point.name %>(<%= @affected_body_part.value_for_measuring_ponit(measuring_point.id) %>) 
+<%= form_for @measurement  do |f| %>
+<%= f.hidden_field :measuring_point_id, measuring_point.id %>
+<%= f.hidden_field :affected_body_part_id, @affected_body_part.id %>
+<% end %>
