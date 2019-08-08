@@ -1,0 +1,12 @@
+<h1>Measuring points for your <%= @affected_body_part.name %></h1> 
+
+<ul>
+<% @measuring_points.each do |mp| %>
+  <li><%= mp.value %>cm</li>
+<% end %>
+</ul>
+<h2>Add measuring point</h2>
+<%= simple_form_for [@affected_body_part, @affected_body_part.measuring_points.build] do |f| %>
+  <%= f.input :value %>
+  <%= f.submit %>
+  <% end %> 

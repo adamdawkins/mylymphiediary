@@ -1,21 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Affected Body Parts</h1>
-<% @body_parts.each do |body_part| %>
-  <% if @user.body_parts.include? body_part %>
-    <%= body_part.name %>
-  <% else %>
-<%= simple_form_for([@user, @user.affected_body_parts.build]) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <%= f.hidden_field :body_part_id, value: body_part.id %>
+<h1>Track your measurments</h1>
 
-  <div class="form-actions">
-    <%= f.button :submit, body_part.name %>
-  </div>
-<% end %>
-<% end %>
-<% end %>
-<br>
-
-<%= link_to 'New Affected Body Part', new_user_affected_body_part_path(@user) %>
+<%= render @affected_body_parts %>

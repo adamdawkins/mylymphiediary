@@ -9,9 +9,7 @@ class AffectedBodyPart < ApplicationRecord
   validates_presence_of :user_id
   validates_presence_of :body_part_id
 
-  def value_for_measuring_point(measuring_point_id)
-    measuring_point_values.where(measuring_point_id: measuring_point.id).value
+  def name
+    body_part.name
   end
-
-
 end
