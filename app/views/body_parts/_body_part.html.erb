@@ -1,5 +1,13 @@
 <div class="card">
-  <%= form_for body_part do |f| %>
-    <%= f.submit body_part.name %>
+  <% if session[:body_part_ids].include? body_part.id %>
+    <%= form_for body_part, method: :delete do |f| %>
+      <%= body_part.name %>
+      <%= f.submit "remove" %>
     <% end %>
+  <% else %>
+    <%= form_for body_part do |f| %>
+      <%= body_part.name %>
+      <%= f.submit "select" %>
+    <% end %>
+  <% end %>
 </div>
