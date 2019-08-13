@@ -1,6 +1,9 @@
 <div class="card">
  <div class="card-body">
   <h3><%= affected_body_part.body_part.name %></h3>
+  <% if affected_body_part.measuring_points.any? %>
+    <%= link_to "Start a recording", new_affected_body_part_recording_path(affected_body_part) %>
+  <% end %>
   <%= link_to "Add measuring points", affected_body_part_measuring_points_path(affected_body_part) %>
  </div>
 </div>

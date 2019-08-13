@@ -3,4 +3,9 @@ class Recording < ApplicationRecord
   has_many :measurements, dependent: :destroy
 
   validates :recorded_at, :affected_body_part_id, presence: true
+
+  accepts_nested_attributes_for :measurements
+
 end
+
+
