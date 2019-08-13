@@ -1,4 +1,5 @@
 class AffectedBodyPartsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_affected_body_part, only: [:show, :edit, :update, :destroy]
   before_action :set_user
 
@@ -66,7 +67,7 @@ class AffectedBodyPartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:user_id])
+      @user = current_user
     end
     def set_affected_body_part
       @affected_body_part = AffectedBodyPart.find(params[:id])

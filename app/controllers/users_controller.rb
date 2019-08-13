@@ -11,7 +11,9 @@ class UsersController < ApplicationController
         session[:body_part_ids].each do |id|
           @user.affected_body_parts.create(body_part_id: id)
         end
-        format.html { redirect_to user_affected_body_parts_path(@user) }
+        @user.send_login_email
+
+        format.html { redirect_to affected_body_parts_path }
       else
         format.html { render :new }
       end

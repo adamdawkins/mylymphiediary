@@ -15,7 +15,7 @@ class RecordingsController < ApplicationController
       if @recording.save
         format.html { redirect_to @affected_body_part }
       else
-        format.html { rendirect_to new_affected_body_part_recording_path @affected_body_part}
+        format.html { redirect_to new_affected_body_part_recording_path @affected_body_part}
       end
     end
   end

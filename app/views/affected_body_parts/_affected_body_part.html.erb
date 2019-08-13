@@ -1,8 +1,16 @@
 <div class="card">
  <div class="card-body">
-  <h3><%= affected_body_part.body_part.name %></h3>
+  <h2><%= affected_body_part.body_part.name %></h2>
   <% if affected_body_part.measuring_points.any? %>
     <%= link_to "Start a recording", new_affected_body_part_recording_path(affected_body_part) %>
+  <% end %>
+  <% if affected_body_part.recordings.any? %>
+    <h4>Recordings </h4>
+    <ul>
+    <% affected_body_part.recordings.each do |recording| %>
+      <li><%= link_to recording.recorded_at, [affected_body_part, recording] %></li>
+    <% end %>
+    </ul>
   <% end %>
   <%= link_to "Add measuring points", affected_body_part_measuring_points_path(affected_body_part) %>
  </div>

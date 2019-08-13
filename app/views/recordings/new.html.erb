@@ -4,7 +4,7 @@
   <%= f.date_field :recorded_at, value: Date.new %>
   <% @recording.measurements.each do |measurement| %>
     <div>
-      <%= f.fields_for :measurements, index: measurement.id do |fields| %>
+      <%= f.fields_for :measurement, index: measurement.id do |fields| %>
         <%= fields.label :value, measurement.measuring_point.value %>
         <%= fields.number_field :value %>
       <% end %>
