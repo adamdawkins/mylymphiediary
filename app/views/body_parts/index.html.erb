@@ -1,6 +1,10 @@
 <p><%= notice %></p>
-<h1>Where are you affected by Lymphoedema?</h1>
-<p>Choosing a body part allows you to track your measurements over time and better manage your Lymphoedema</p>
+<div class="heading">
+  <h1>Where are you affected by Lymphoedema?</h1>
+  <p>Choosing a body part allows you to track your measurements over time and better manage your Lymphoedema</p>
+</div>
 
-<%= render @body_parts %>
-<%= link_to "Next", new_user_path %>
+<div class="page-content">
+  <%= render @body_parts%>
+  <%= link_to "Next", new_user_path, class:"btn btn-nextpage" %>
+</div>

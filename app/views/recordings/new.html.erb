@@ -1,14 +1,19 @@
-<h1>Start a recording</h1>
+<div class="heading">
+  <h1>Start a recording</h1>
+</div>
 
-<%= form_for [@affected_body_part, @recording] do |f| %>
-  <%= f.date_field :recorded_at, value: Date.new %>
-  <% @recording.measurements.each do |measurement| %>
-    <div>
-      <%= f.fields_for :measurement, index: measurement.id do |fields| %>
-        <%= fields.label :value, measurement.measuring_point.value %>
-        <%= fields.number_field :value %>
-      <% end %>
-    </div>
+<div class="form">
+  <%= form_for [@affected_body_part, @recording] do |f| %>
+    <p>Date: </p>
+    <%= f.date_field :recorded_at, value: Date.new %>
+    <% @recording.measurements.each do |measurement| %>
+      <div>
+        <%= f.fields_for :measurement, index: measurement.id do |fields| %>
+          <%= fields.label :value, measurement.measuring_point.value %>
+          <%= fields.number_field :value %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= f.submit class:"btn"%>
   <% end %>
-  <%= f.submit %>
-<% end %>
+</div>

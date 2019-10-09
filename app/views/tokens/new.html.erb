@@ -1,12 +1,16 @@
 <p><%= notice %></p>
-<h1>Enter your email below to get a secure login link</h1>
+<div class="heading">
+  <h1>Enter your email below to get a secure login link</h1>
+</div>
 
-<%= form_tag tokens_path, method: :post do |f| %>
-  <% if @user.present? %>
-    <%= hidden_field_tag :user_id, value: @user.id %>
-  <% else %>
-    <%= email_field_tag :user_email, nil, placeholder: "your email" %>
+<div class="form">
+  <%= form_tag tokens_path, method: :post do |f| %>
+    <% if @user.present? %>
+      <%= hidden_field_tag :user_id, value: @user.id %>
+    <% else %>
+      <%= email_field_tag :user_email, nil, placeholder: "your email" %>
+    <% end %>
+
+    <%= submit_tag "Send login email" %>
   <% end %>
-
-  <%= submit_tag "Send login email" %>
-<% end %>
+</div>

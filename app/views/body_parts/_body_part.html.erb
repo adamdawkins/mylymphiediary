@@ -1,13 +1,19 @@
 <div class="card">
   <% if session[:body_part_ids].include? body_part.id %>
-    <%= form_for body_part, method: :delete do |f| %>
-      <%= body_part.name %>
-      <%= f.submit "remove" %>
+  <div>
+      <%= form_for body_part, method: :delete do |f| %>
+      <div class="flex row">
+        <h2><%= body_part.name %></h2>
+        <%= f.submit "remove", class:"btn btn-remove" %>
+      </div>
+      <% end %>
+    <% else %>
+      <%= form_for body_part do |f| %>
+      <div class="flex row">
+        <h2><%= body_part.name %></h2>
+        <%= f.submit "select",  class:"btn btn-nextpage"%>
+      </div>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= form_for body_part do |f| %>
-      <%= body_part.name %>
-      <%= f.submit "select" %>
-    <% end %>
-  <% end %>
+  </div>
 </div>

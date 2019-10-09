@@ -1,9 +1,12 @@
-<div class="card">
- <div class="card-body">
+<div class="flex row card card-background">
   <h2><%= affected_body_part.body_part.name %></h2>
-  <% if affected_body_part.measuring_points.any? %>
-    <%= link_to "Start a recording", new_affected_body_part_recording_path(affected_body_part) %>
-  <% end %>
+  <div class="flex column">
+    <% if affected_body_part.measuring_points.any? %>
+      <%= link_to "Start a recording", new_affected_body_part_recording_path(affected_body_part), class:"btn" %>
+    <% end %>
+    <%= link_to "Add measuring points", affected_body_part_measuring_points_path(affected_body_part), class:"btn" %>
+  </div>
+  <div>
   <% if affected_body_part.recordings.any? %>
     <h4>Recordings </h4>
     <ul>
@@ -11,7 +14,6 @@
       <li><%= link_to recording.recorded_at, [affected_body_part, recording] %></li>
     <% end %>
     </ul>
-  <% end %>
-  <%= link_to "Add measuring points", affected_body_part_measuring_points_path(affected_body_part) %>
- </div>
+    <% end %>
+  </div>
 </div>

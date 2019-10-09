@@ -1,3 +1,26 @@
 // Place all the styles related to the body_parts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page-content{
+  height: 100%;
+  // border: 1px solid red;
+  background-image: asset_url("stick-man.svg");
+  background-position:center;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
+.card{
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-flow: row wrap;
+  margin: 2px;
+}
+
+.card-background{
+  background-color: white;
+  border: 1px solid rgb(224, 220, 220);
+}

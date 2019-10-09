@@ -1,6 +1,10 @@
-<h1>Users#new</h1>
+<div class="heading">
+  <h1>Please provide your email address to begin:</h1>
+</div>
 
-<%= simple_form_for @user do |f| %>
-  <%= f.input :email %>
-  <%= f.submit %> 
-<% end %>
+<div class="form">
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :email %>
+    <%= f.submit "Next", class:"btn btn-nextpage" %>
+  <% end %>
+</div>

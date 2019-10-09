@@ -9,7 +9,7 @@ class RecordingsController < ApplicationController
   end
 
   def create
-    @recording = @affected_body_part.recordings.build(recording_params) 
+    @recording = @affected_body_part.recordings.build(recording_params)
 
     respond_to do |format|
       if @recording.save

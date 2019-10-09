@@ -10,7 +10,10 @@
   </head>
 
   <body>
-    <%= current_user.id if current_user.present? %>
-    <%= yield %>
+    <%# <%= current_user.id if current_user.present? %> 
+    <div class="container"
+      <%= yield %>
+    </div>
+    <%= render 'layouts/navigation' %>
   </body>
 </html>
